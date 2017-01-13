@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="expion">
+  
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  </head>
+  
+  <body>
+
+    <section ng-controller="autoCompleteCtrl as auto" class="col-lg-1 col-offset-6 centered">
+      <div class="container">
+        <label>Autocomplete: </label> <br/>
+	    <textarea cols="150" ng-model="search"></textarea>
+	    <table>
+          <tr ng-repeat="dict in auto.dictionary | filter: auto.search">
+            <td ng-if="dict.word.substring(0, search.length) == search" ng-click="auto.autocomplete(dict.word)">{{dict.word}}</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js" ></script>
+    <script type="text/javascript" src="app.js" ></script>
+  </body>
+
+</html>
